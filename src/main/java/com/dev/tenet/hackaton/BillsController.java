@@ -19,10 +19,9 @@ public class BillsController {
         billsService.processOperationStep(userId, operationId, stepId, currentFields);
     }
 
-    @PostMapping("/processOperationStep/{operationId}/{userId}")
+    @PostMapping("/processOperation/{operationId}/{userId}")
     public void processOperation(@PathVariable("userId")Integer userId,
-                                     @PathVariable("operationId")Integer operationId,
-                                     @RequestBody List<FieldDescription> currentFields) {
+                                     @PathVariable("operationId")Integer operationId) {
         billsService.processOperation(userId, operationId);
     }
 }

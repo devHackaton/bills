@@ -10,7 +10,8 @@ import java.util.List;
 public interface UserOperationStateFeignClient {
 
     @PostMapping(value = "/userOperationRegistrationState/saveCurrentFieldData/{userId}/{operationId}")
-    void saveCurrentFieldData(@RequestBody List<FieldDescription> fieldDescription);
+    void saveCurrentFieldData(@RequestBody List<FieldDescription> fieldDescription, @PathVariable("userId") Integer userId,
+                              @PathVariable("operationId")Integer operationId);
 
     @GetMapping(value = "/currentOperationRegistrationState/{userId}/{operationId}")
     List<FieldDescription> getCurrentOperationRegistrationState(@PathVariable("userId")Integer userId,

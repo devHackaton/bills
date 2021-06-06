@@ -26,14 +26,10 @@ public class TargetUserSelectionStep extends AbstractStep {
                     throw new IllegalArgumentException("Username is empty!");
                 }
                 //дергаем UserStateService и записываем в него филды данного шага
-                userOperationStateFeignClient.saveCurrentFieldData(currentFieldsWithData);
+                userOperationStateFeignClient.saveCurrentFieldData(currentFieldsWithData, userId, operationId);
                 //дергаем MetaInfoService передавая ему стейт данного шага, id операции и id шага
-                int nextStepId = metaInfoFeignClient.notifyOperationStepFinish(userId, operationId,
-                        field.getStepId(), OperationStepState.PASSED);
-                if (nextStepId == -1) {
-                    //уведомляем meta-inf о завершении регистрации операции, для выдачи экрана подтверждения
-                    metaInfoFeignClient.notifyOperationRegistrationFinish(userId, operationId);
-                }
+                metaInfoFeignClient.notifyOperationStepFinish(operationId,
+                        getStepId(), OperationStepState.PASSED);
             }
         });
         return 0;

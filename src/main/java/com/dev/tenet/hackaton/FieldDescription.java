@@ -1,12 +1,12 @@
 package com.dev.tenet.hackaton;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class FieldDescription {
 
     private int fieldId;

@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(name = "meta-info")
 public interface MetaInfoFeignClient {
 
-    @GetMapping(value = "/meta-info/notifyRegistrationFinish/{userId}/{operationId}")
-    void notifyOperationRegistrationFinish(@PathVariable("userId")Integer userId,
-                                           @PathVariable("operationId")Integer operationId);
+//    @GetMapping(value = "/meta-info/notifyRegistrationFinish/{userId}/{operationId}")
+//    void notifyOperationRegistrationFinish(@PathVariable("userId")Integer userId,
+//                                           @PathVariable("operationId")Integer operationId);
 
-    @GetMapping(value = "/meta-info/notifyOperationStepFinish/{userId}/{operationId}/{stepId}/{stepState}")
-    int notifyOperationStepFinish(@PathVariable("userId")Integer userId,
-                                  @PathVariable("operationId")Integer operationId,
-                                  @PathVariable("stepId")Integer stepId,
-                                  @PathVariable("stepState")OperationStepState operationStepState);
+    @GetMapping(value = "/operations/{operation}/{step}/{state}")
+    int notifyOperationStepFinish(
+                                  @PathVariable("operation")Integer operationId,
+                                  @PathVariable("step")Integer stepId,
+                                  @PathVariable("state")OperationStepState operationStepState);
 }

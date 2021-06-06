@@ -31,7 +31,7 @@ public class PersonToPersonTransferOperation extends AbstractOperation {
     public void run(int userId) {
         List<FieldDescription> currentOperationRegistrationState =
                 userOperationStateFeignClient.getCurrentOperationRegistrationState(userId, getOperationId());
-
+        System.out.println("finish");
         //сделать запрос в userService для начисления на счет таргет пользователю средств размера amount, выбрав их из current списка
         //сделать запрос на снятие средств у текущего юзера
         //уведомить какой-то топик о завершении операции
