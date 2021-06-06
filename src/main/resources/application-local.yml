@@ -1,0 +1,15 @@
+spring:
+  kafka:
+    bootstrap-servers: 84.201.167.235:9092
+    consumer:
+      group-id: bills_group
+    topic:
+      bills-topic: bills-created
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://84.201.167.235:8761/eureka
+    register-with-eureka: false
+  instance:
+    preferIpAddress: true
